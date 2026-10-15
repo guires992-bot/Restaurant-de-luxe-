@@ -1,0 +1,6 @@
+{
+  "name": "MORRA — Haute Gastronomie & Pavillon Architectural",
+  "description": "Une expérience gastronomique d'exception au cœur d'un pavillon monumental aux arches de travertin, portail sculpté en pétales et bassin miroir illuminé.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

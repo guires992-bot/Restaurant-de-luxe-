@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.12em;
+  }
+
+  .font-mono-numbers {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom architectural water and golden glow */
+.gold-glow-radial {
+  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.18), transparent 70%);
+}
+
+.fountain-reflection {
+  background: linear-gradient(180deg, rgba(20, 27, 36, 0.8) 0%, rgba(10, 14, 20, 0.95) 100%);
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.25);
+}
