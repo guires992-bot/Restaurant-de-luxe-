@@ -1,130 +1,118 @@
-import React from 'react';
-import { MapPin, Phone, Mail, Clock, Compass, Car } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import React, { useState } from 'react';
+import { ArrowRight, Check, Shield } from 'lucide-react';
 
-interface FooterProps {
-  onOpenReservation: () => void;
-}
+export const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
 
-export const Footer: React.FC<FooterProps> = ({ onOpenReservation }) => {
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setTimeout(() => {
+        setEmail('');
+      }, 3000);
+    }
+  };
+
   return (
-    <footer id="acces" className="bg-[#0A0908] text-[#A89A8C] border-t border-[#261E17]">
-      
-      {/* Access & Hours Interactive Bar */}
-      <div className="max-w-7xl mx-auto px-6 py-16 border-b border-[#1A1511]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-[#111113] text-[#FAF8F5] pt-16 pb-12 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main 4-column layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
           
-          {/* Brand & Address */}
-          <div className="space-y-4">
-            <span className="font-cinzel text-2xl font-bold tracking-[0.2em] text-[#E5C378] uppercase block">
-              {RESTAURANT_INFO.name}
+          {/* Brand & Mission (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <span className="text-xl font-cinzel tracking-[0.25em] uppercase text-white block">
+              MAISON D’ORSAY
             </span>
-            <p className="text-xs text-[#8E8072] leading-relaxed">
-              Pavillon culinaire d’exception où dialoguent la pierre de travertin sculptée, les grandes arches de 8 mètres et le reflet des fontaines dansantes.
+            <p className="text-xs text-white/60 leading-relaxed max-w-sm font-normal">
+              Haute Couture et prêt-à-porter d’exception. Façonné à la main dans notre atelier historique de la Place Vendôme, Paris. Matières naturelles et durabilité certifiée à vie.
             </p>
-            <div className="text-xs text-[#DDD4CA] space-y-2 pt-1">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                <span>{RESTAURANT_INFO.address}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Compass className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                <span className="text-[#8E8072]">{RESTAURANT_INFO.metro}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Car className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                <span className="text-[#8E8072]">{RESTAURANT_INFO.valet}</span>
-              </div>
+            <div className="pt-2 flex items-center gap-2 text-xs text-[#C5A880]">
+              <Shield className="w-4 h-4 shrink-0" />
+              <span>Membre de la Fédération de la Haute Couture et de la Mode</span>
             </div>
           </div>
 
-          {/* Horaires des Services */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-[#D4AF37] font-semibold flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5" />
-              <span>Horaires des Services</span>
-            </div>
-            <ul className="text-xs space-y-2.5 text-[#DDD4CA]">
-              {RESTAURANT_INFO.hours.map((h, i) => (
-                <li key={i} className="pb-1.5 border-b border-[#1A1511] last:border-0">
-                  <div className="text-[#8E8072] font-medium">{h.days}</div>
-                  <div>Déjeuner : {h.lunch}</div>
-                  <div>Dîner : {h.dinner}</div>
-                </li>
-              ))}
+          {/* Salons & Boutiques (2 cols) */}
+          <div className="lg:col-span-2 space-y-3 text-xs">
+            <span className="uppercase tracking-widest text-white/40 font-medium block mb-2">
+              Salons Privés
+            </span>
+            <ul className="space-y-2 text-white/70">
+              <li><a href="#salons" className="hover:text-white transition-colors">Paris · Place Vendôme</a></li>
+              <li><a href="#salons" className="hover:text-white transition-colors">Monaco · Monte-Carlo</a></li>
+              <li><a href="#salons" className="hover:text-white transition-colors">Genève · Rue du Rhône</a></li>
+              <li><a href="#salons" className="hover:text-white transition-colors">Londres · Mayfair (2027)</a></li>
             </ul>
           </div>
 
-          {/* Contact & Réservations */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-[#D4AF37] font-semibold flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5" />
-              <span>Conciergerie &amp; Réservations</span>
-            </div>
-            <div className="text-xs text-[#DDD4CA] space-y-2">
-              <div>
-                <span className="text-[#8E8072] block">Ligne directe :</span>
-                <a href={`tel:${RESTAURANT_INFO.phone}`} className="hover:text-[#F3DC9B] transition-colors font-mono-numbers">
-                  {RESTAURANT_INFO.phone}
-                </a>
-              </div>
-              <div>
-                <span className="text-[#8E8072] block">Contact numérique :</span>
-                <a href={`mailto:${RESTAURANT_INFO.email}`} className="hover:text-[#F3DC9B] transition-colors">
-                  {RESTAURANT_INFO.email}
-                </a>
-              </div>
-              <div className="pt-2">
+          {/* Services & Conciergerie (2 cols) */}
+          <div className="lg:col-span-2 space-y-3 text-xs">
+            <span className="uppercase tracking-widest text-white/40 font-medium block mb-2">
+              Services Maison
+            </span>
+            <ul className="space-y-2 text-white/70">
+              <li><span className="text-white/90">Atelier Sur-Mesure</span></li>
+              <li><span className="text-white/90">Retouches d’Urgence</span></li>
+              <li><span className="text-white/90">Entretien &amp; Restauration</span></li>
+              <li><span className="text-white/90">Livraison Gants Blancs</span></li>
+            </ul>
+          </div>
+
+          {/* Newsletter / Gazette D'Orsay (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <span className="text-xs uppercase tracking-widest text-white/40 font-medium block mb-1">
+              La Gazette D’Orsay
+            </span>
+            <p className="text-xs text-white/60 leading-relaxed">
+              Recevez en avant-première nos carnets de défilé et invitations aux présentations privées.
+            </p>
+
+            <form onSubmit={handleSubscribe} className="pt-1">
+              <div className="flex border-b border-white/30 focus-within:border-[#C5A880] transition-colors py-1">
+                <input
+                  type="email"
+                  required
+                  placeholder="votre.courriel@domaine.fr"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-transparent text-xs text-white placeholder-white/40 focus:outline-none"
+                />
                 <button
-                  onClick={onOpenReservation}
-                  className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-[#0D0B0A] bg-[#D4AF37] hover:bg-[#E5C378] transition-all border border-[#F3DC9B]"
+                  type="submit"
+                  className="p-1 text-white/60 hover:text-white transition-colors"
+                  aria-label="S'inscrire à la gazette"
                 >
-                  Réserver une Table
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
-          </div>
-
-          {/* Équipe & Architecture */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-[#D4AF37] font-semibold">
-              Maison &amp; Création
-            </div>
-            <div className="text-xs space-y-2 text-[#8E8072]">
-              <div>
-                <span className="text-[#DDD4CA] block font-medium">Chefs Fondateurs :</span>
-                <span>{RESTAURANT_INFO.chef}</span>
-              </div>
-              <div>
-                <span className="text-[#DDD4CA] block font-medium">Chef Sommelier :</span>
-                <span>{RESTAURANT_INFO.sommelier}</span>
-              </div>
-              <div>
-                <span className="text-[#DDD4CA] block font-medium">Architecture &amp; Scénographie :</span>
-                <span>{RESTAURANT_INFO.architect}</span>
-              </div>
-            </div>
+              {subscribed && (
+                <div className="flex items-center gap-1.5 text-[11px] text-[#C5A880] mt-2">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Votre invitation a été transmise.</span>
+                </div>
+              )}
+            </form>
           </div>
 
         </div>
-      </div>
 
-      {/* Quiet Legal Bar */}
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6E6357]">
-        <div className="flex items-center gap-2">
-          <span>&copy; {new Date().getFullYear()} MORRA. Tous droits réservés.</span>
-          <span aria-hidden="true">&middot;</span>
-          <span>Pavillon Architectural &amp; Haute Gastronomie</span>
+        {/* Quiet Sub-Footer */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 gap-4">
+          <div className="flex items-center gap-3">
+            <span>© 2026 Maison D’Orsay Paris. Tous droits réservés.</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-white/80 transition-colors">Certificat de Traçabilité</a>
+            <a href="#" className="hover:text-white/80 transition-colors">Mentions Légales</a>
+            <a href="#" className="hover:text-white/80 transition-colors">Politique de Confidentialité</a>
+          </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <a href="#pavillon" className="hover:text-[#A89A8C] transition-colors">Le Pavillon</a>
-          <a href="#carte" className="hover:text-[#A89A8C] transition-colors">La Carte</a>
-          <a href="#degustation" className="hover:text-[#A89A8C] transition-colors">Menus</a>
-          <a href="#privatisation" className="hover:text-[#A89A8C] transition-colors">Privatisation</a>
-        </div>
       </div>
-
     </footer>
   );
 };

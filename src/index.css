@@ -1,17 +1,33 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --canvas: #FAF8F5;
+    --canvas-subtle: #F3EFEA;
+    --canvas-dark: #111113;
+    --text-primary: #171615;
+    --text-muted: #736E67;
+    --gold-accent: #C5A880;
+    --gold-hover: #B5956A;
+    --border-subtle: rgba(23, 22, 21, 0.08);
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, .font-serif {
     font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.01em;
   }
 
   .font-cinzel {
     font-family: 'Cinzel', serif;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
   }
 
   .font-mono-numbers {
@@ -20,15 +36,25 @@
   }
 }
 
-/* Custom architectural water and golden glow */
-.gold-glow-radial {
-  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.18), transparent 70%);
+/* Subtle image scale on hover */
+.group-hover-zoom {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .group-hover-zoom {
+  transform: scale(1.04);
 }
 
-.fountain-reflection {
-  background: linear-gradient(180deg, rgba(20, 27, 36, 0.8) 0%, rgba(10, 14, 20, 0.95) 100%);
+/* Custom smooth luxury scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-.gold-border-glow {
-  box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.25);
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D2C7;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B5956A;
 }
