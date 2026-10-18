@@ -1,60 +1,33 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --canvas: #FAF8F5;
-    --canvas-subtle: #F3EFEA;
-    --canvas-dark: #111113;
-    --text-primary: #171615;
-    --text-muted: #736E67;
-    --gold-accent: #C5A880;
-    --gold-hover: #B5956A;
-    --border-subtle: rgba(23, 22, 21, 0.08);
-  }
-
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: var(--canvas);
-    color: var(--text-primary);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  h1, h2, h3, h4, .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    letter-spacing: -0.01em;
-  }
-
-  .font-cinzel {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.15em;
-  }
-
-  .font-mono-numbers {
-    font-family: 'JetBrains Mono', monospace;
-    font-variant-numeric: tabular-nums;
+    font-family: 'Chakra Petch', system-ui, -apple-system, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
   }
 }
 
-/* Subtle image scale on hover */
-.group-hover-zoom {
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.group:hover .group-hover-zoom {
-  transform: scale(1.04);
+.font-arcade {
+  font-family: 'Press Start 2P', monospace;
 }
 
-/* Custom smooth luxury scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+.font-tech {
+  font-family: 'Chakra Petch', sans-serif;
 }
-::-webkit-scrollbar-track {
-  background: #FAF8F5;
+
+/* Neon glow effects */
+.text-glow-rainbow {
+  text-shadow: 0 0 10px rgba(255, 100, 200, 0.7), 0 0 20px rgba(100, 200, 255, 0.7);
 }
-::-webkit-scrollbar-thumb {
-  background: #D8D2C7;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #B5956A;
+
+.box-glow {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 15px rgba(255, 255, 255, 0.08);
 }
